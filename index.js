@@ -1,10 +1,13 @@
 const express = require('express');
+const morgan = require('morgan');
 
 // When we require the `express` package,
 // we get a function in return that generates
 // instances of an express app.
 // We use this object to build a web server.
 const app = express();
+
+app.use(morgan("dev"));
 
 // PARTS OF A URL
 
