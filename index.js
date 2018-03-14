@@ -6,6 +6,7 @@ const morgan = require('morgan');
 // instances of an express app.
 // We use this object to build a web server.
 const app = express();
+app.set("view engine", "ejs");
 
 app.use(morgan("dev"));
 
@@ -42,6 +43,16 @@ app.get("/home", (request, response) => {
   // the server's reply to the client. We are response
   // for the building and sending it.
   response.send("Welcome at CodeCore! 💻");
+});
+
+// URL: http://localhost:3000/ METHOD: GET
+app.get("/", (request, response) => {
+  // response.render can be used render the contents
+  // of a template file.  Express expects all templates
+  // to be inside of the "/views" director.
+  // As a first argument, pass the path the template
+  // ignore the "/views" directory.
+  response.render("index");
 });
 
 const DOMAIN = "localhost";
