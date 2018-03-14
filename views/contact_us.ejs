@@ -8,6 +8,19 @@
 
     <h1>Contact Us</h1>
 
+    <% if (fullName && message) { %>
+      <div>
+        <p>Thank you, <%= fullName %>!</p>
+        <p><strong>Your message was:</strong> <%= message %></p>
+      </div>
+    <% } %>
+
+    <!--
+      When a form is submitted with default attributes,
+      the browser will make HTTP GET request to the URL
+      browser is currently at. It will append to the end
+      of that URL the form data as a query string.
+    -->
     <form>
       <div>
         <label for="fullName">Full Name</label> <br/>
@@ -28,6 +41,10 @@
         <input type="submit" value="Submit" />
       </div>
     </form>
+
+    <h4>
+      <%= sample %>
+    </h4>
 
   </body>
 </html>

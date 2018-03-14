@@ -69,7 +69,22 @@ app.get("/contact_us", (request, response) => {
   // property "query" of request. request.query will
   // have a JavaScript converted from the query string.
   console.log(request.query);
-  response.render("contact_us");
+
+  const fullName = request.query.fullName;
+  const message = request.query.message;
+
+  // To create local variables inside of templates, pass
+  // an object as a second argument to response.render().
+  // All key-values of that object will become variables inside
+  // of the template where its keys will be the variable names.
+  response.render(
+    "contact_us",
+    {
+      sample: "My Sample!",
+      fullName: fullName,
+      message: message
+    }
+  );
 });
 
 const DOMAIN = "localhost";
