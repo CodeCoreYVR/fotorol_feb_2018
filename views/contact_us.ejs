@@ -1,50 +1,50 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Fotorol</title>
-  </head>
-  <body>
+<%- include('./partials/header') %>
 
-    <h1>Contact Us</h1>
+<%#
+  Use a - in ejs tag when the express returns
+  HTML and we want ejs to treat it as HTML.
+  With a =, it will treat as text and escape all HTML
+  specific characters like greater than, smaller than, etc.
+%>
 
-    <% if (fullName && message) { %>
-      <div>
-        <p>Thank you, <%= fullName %>!</p>
-        <p><strong>Your message was:</strong> <%= message %></p>
-      </div>
-    <% } %>
+<h1>Contact Us</h1>
 
-    <!--
-      When a form is submitted with default attributes,
-      the browser will make HTTP GET request to the URL
-      browser is currently at. It will append to the end
-      of that URL the form data as a query string.
-    -->
-    <form>
-      <div>
-        <label for="fullName">Full Name</label> <br/>
-        <input type="text" name="fullName" id="fullName" />
-      </div>
+<% if (fullName && message) { %>
+  <div>
+    <p>Thank you, <%= fullName %>!</p>
+    <p><strong>Your message was:</strong> <%= message %></p>
+  </div>
+<% } %>
 
-      <div>
-        <label for="message">Message</label> <br />
-        <textarea
-          name="message"
-          id="message"
-          cols="60"
-          rows="8"
-        ></textarea>
-      </div>
+<!--
+  When a form is submitted with default attributes,
+  the browser will make HTTP GET request to the URL
+  browser is currently at. It will append to the end
+  of that URL the form data as a query string.
+-->
+<form>
+  <div>
+    <label for="fullName">Full Name</label> <br/>
+    <input type="text" name="fullName" id="fullName" />
+  </div>
 
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
+  <div>
+    <label for="message">Message</label> <br />
+    <textarea
+      name="message"
+      id="message"
+      cols="60"
+      rows="8"
+    ></textarea>
+  </div>
 
-    <h4>
-      <%= sample %>
-    </h4>
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+</form>
 
-  </body>
-</html>
+<h4>
+  <%= sample %>
+</h4>
+
+<%- include('./partials/footer') %>
