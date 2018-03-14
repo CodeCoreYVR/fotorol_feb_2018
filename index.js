@@ -12,8 +12,17 @@ app.use(morgan("dev"));
 
 // PARTS OF A URL
 
-// URL http://www.example.com/home/
-// scheme  | host           | path
+// URL http://www.example.com/contact_us/?fullName=Steve+Godin&message=+What+is+up%3F
+// scheme  | host           | path      | query string
+
+
+// The "query" string is way to data in the URL. Data formatted
+// uses URL encoding.
+// ?fullName=Steve+Godin&message=+What+is+up%3F
+// ? indicates that a query string is beginning
+// In "fullName=Steve+Godin", fullName is the key and
+// Steve+Godin is a value. Key-value are seperated by =.
+// Then, key-value pairs are seperated by `&`.
 
 // The "scheme" identifies the protocol being used. This
 // is typically HTTP or HTTPS.
@@ -53,6 +62,14 @@ app.get("/", (request, response) => {
   // As a first argument, pass the path the template
   // ignore the "/views" directory.
   response.render("index");
+});
+
+app.get("/contact_us", (request, response) => {
+  // To access data in the query string of a url, use
+  // property "query" of request. request.query will
+  // have a JavaScript converted from the query string.
+  console.log(request.query);
+  response.render("contact_us");
 });
 
 const DOMAIN = "localhost";
