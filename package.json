@@ -1,0 +1,16 @@
+{
+  "name": "fotorol",
+  "version": "0.0.1",
+  "description": "An Instagram clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "instagram",
+    "web",
+    "photos"
+  ],
+  "author": "Steve Godin",
+  "license": "ISC"
+}
