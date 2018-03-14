@@ -38,7 +38,7 @@ app.get("/home", (request, response) => {
   // The `response` argument is object that represents
   // the server's reply to the client. We are response
   // for the building and sending it.
-  response.send("Hello, World!");
+  response.send("Welcome at CodeCore! 💻");
 });
 
 const DOMAIN = "localhost";
