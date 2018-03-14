@@ -12,5 +12,8 @@
     "photos"
   ],
   "author": "Steve Godin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
