@@ -1,6 +1,8 @@
 const path = require("path")
 const express = require("express");
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 
 // When we require the `express` package,
 // we get a function in return that generates
@@ -10,8 +12,10 @@ const app = express();
 app.set("view engine", "ejs");
 
 // MIDDLEWARE
+
 // Http Request Logger
 app.use(morgan("dev"));
+
 // Static Assets
 // Use path.join to combine strings into directory paths.
 // Example: path.join("fotorol", "public") -> "fotorol/public"
@@ -21,6 +25,12 @@ app.use(morgan("dev"));
 // where __diname is being used.
 console.log("__dirname:", __dirname);
 app.use(express.static(path.join(__dirname, "public")))
+
+// Cookie Parser
+app.use(cookieParser());
+
+// Body Parser
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 // PARTS OF A URL
@@ -98,6 +108,21 @@ app.get("/contact_us", (request, response) => {
       message: message
     }
   );
+});
+
+const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24 * 7;
+// The max-age of a cookie is stored in milliseconds.
+// The above translates into a week.
+app.post("/sign_in", (request, response) => {
+  // Data coming from a form submit with the HTTP verb
+  // POST will available in the request's body.
+  // If you install and setup body-parser middleware, then
+  // that data will be parsed into a JavaScript that will
+  // be assigned to request.body.
+  console.log(request.body);
+
+  response.cookie("username", request.body.username, {maxAge: COOKIE_MAX_AGE});
+  response.redirect("/");
 });
 
 const DOMAIN = "localhost";
