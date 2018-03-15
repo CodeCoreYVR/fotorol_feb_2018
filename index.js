@@ -32,6 +32,31 @@ app.use(cookieParser());
 // Body Parser
 app.use(bodyParser.urlencoded({extended: true}));
 
+// Custom Middleware
+app.use((request, response, next) => {
+  // To read cookies, use `request.cookies`.
+  // This is added by "cookie-parser". It contains
+  // an object with cookie names as keys and their values.
+  const username = request.cookies.username;
+  console.log(request.cookies);
+
+  response.locals.username = null;
+
+  if (username) {
+    // All properties of the `response.locals` object are
+    // available as variables inside all templates that
+    // our app renders.
+    response.locals.username = username;
+  }
+  // When creating middleware, you must call next() when
+  // your middleware has finished. This tells Express to call
+  // the next middleware. If next() is never called, the client
+  // will load forever, because Express will never send a response.
+  next();
+});
+
+
+// ROUTERS
 
 // PARTS OF A URL
 
