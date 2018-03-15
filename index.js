@@ -120,6 +120,16 @@ app.get("/contact_us", (request, response) => {
 
   const fullName = request.query.fullName;
   const message = request.query.message;
+  const things = request.query.things;
+
+  console.log(request.cookies.things);
+
+  // Here we use a cookie to store an array. You can freely
+  // use cookies any JavaScript datatype. THe cookie-parser
+  // will transform string and when you access again
+  // the cookie-parser will transform into its original data type.
+  // This called serializing.
+  response.cookie("things", things.split(/,/));
 
   // To create local variables inside of templates, pass
   // an object as a second argument to response.render().
