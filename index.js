@@ -1,5 +1,6 @@
-const express = require('express');
-const morgan = require('morgan');
+const path = require("path")
+const express = require("express");
+const morgan = require("morgan");
 
 // When we require the `express` package,
 // we get a function in return that generates
@@ -8,7 +9,19 @@ const morgan = require('morgan');
 const app = express();
 app.set("view engine", "ejs");
 
+// MIDDLEWARE
+// Http Request Logger
 app.use(morgan("dev"));
+// Static Assets
+// Use path.join to combine strings into directory paths.
+// Example: path.join("fotorol", "public") -> "fotorol/public"
+
+// __dirname is a global variable available in Node. It gives the
+// the full path, beginning from root of your computer, to the
+// where __diname is being used.
+console.log("__dirname:", __dirname);
+app.use(express.static(path.join(__dirname, "public")))
+
 
 // PARTS OF A URL
 
