@@ -23,9 +23,15 @@
         </ul>
 
         <% if (username) { %>
-          <span class="navbar-text text-light ml-auto">
+          <span class="navbar-text text-light ml-auto mr-3">
             Hello, <%= username %>!
           </span>
+
+          <form action="/sign_out" method="POST" class="form-inline">
+            <button class="btn btn-outline-light" type="submit">
+              Sign Out
+            </button>
+          </form>
         <% } else { %>
           <form
             action="/sign_in"
