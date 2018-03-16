@@ -5,8 +5,7 @@
 
 // The exports.up method is used when migration is run.
 exports.up = knex => {
-  return knex.schema
-    .createTable("posts", table => {
+  return knex.schema.createTable("posts", table => {
       table.increments("id");
       // Create a column that has unique rows, is auto-generated,
       // is auto-incremented and serves as primary key.

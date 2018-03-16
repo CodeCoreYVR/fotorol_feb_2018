@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 // ROUTES
 
 const welcome = require("./routes/welcome");
+const posts = require("./routes/posts");
 
 // When we require the `express` package,
 // we get a function in return that generates
@@ -63,6 +64,7 @@ app.use((request, response, next) => {
 // you can specify a path as a first argument. This path will
 // be prefixed to all routes that are part of the connected router.
 app.use("/", welcome);
+app.use("/posts", posts);
 
 
 const DOMAIN = "localhost";
